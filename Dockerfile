@@ -8,7 +8,7 @@ WORKDIR /app
 COPY ./build/libs/*.jar app.jar
 
 # Environment variables
-ENV SPRING_PROFILES_ACTIVE=local
+ENV SPRING_PROFILES_ACTIVE=prod
 
 # Expose port if necessary
 EXPOSE 8080
