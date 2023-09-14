@@ -14,7 +14,11 @@ public class RepellentDevice {
     @Id @GeneratedValue
     private Long id;
 
+    @Column(unique = true)
     private String serialId;
+
+    private String latitude;
+    private String longitude;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Farm farm;

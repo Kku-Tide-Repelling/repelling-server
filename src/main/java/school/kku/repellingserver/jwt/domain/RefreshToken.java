@@ -1,6 +1,7 @@
-package school.kku.repellingserver.gateway.domain;
+package school.kku.repellingserver.jwt.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,20 +11,21 @@ import school.kku.repellingserver.member.domain.Member;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-public class Gateway {
+public class RefreshToken {
 
     @Id @GeneratedValue
     private Long id;
 
-    private String serialId;
-
-    private String ipv4;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @NotNull
+    @OneToOne(fetch = FetchType.LAZY)
     private Member member;
 
+    @NotNull
+    private String refreshToken;
+
     @Builder
-    public Gateway(String serialId) {
-        this.serialId = serialId;
+    public RefreshToken(Member member, String refreshToken) {
+        this.member = member;
+        this.refreshToken = refreshToken;
     }
 }

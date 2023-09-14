@@ -1,5 +1,6 @@
-package school.kku.repellingserver.user.domain;
+package school.kku.repellingserver.member.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -23,6 +24,7 @@ public class Member {
     private String name;
 
     private String email;
+
 
     @Builder
     public Member(String loginId, String password, String name, String email) {
