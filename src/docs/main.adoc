@@ -1,0 +1,72 @@
+# API 문서
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 3
+
+== GitHub 주소
+
+* link:https://github.com/Kku-Tide-Repelling/repelling-server[GitHub 주소]
+
+== API 목록
+
+=== 퇴치 데이터 (게이트웨이에서 받는)
+
+==== 퇴치 데이터 전송
+
+==== Request
+
+include::{snippets}/repellent-data/success/http-request.adoc[]
+include::{snippets}/repellent-data/success/request-fields.adoc[]
+
+==== Response
+
+include::{snippets}/repellent-data/success/http-response.adoc[]
+
+=== 로그인 성공
+
+=== Request
+
+include::{snippets}/member/login/success/http-request.adoc[]
+include::{snippets}/member/login/success/request-fields.adoc[]
+
+=== Response
+
+include::{snippets}/member/login/success/http-response.adoc[]
+
+
+=== 회원가입
+
+==== Request
+
+include::{snippets}/member/register/success/http-request.adoc[]
+include::{snippets}/member/register/success/request-fields.adoc[]
+
+==== Response
+
+include::{snippets}/member/register/success/http-response.adoc[]
+
+=== 회원가입 이메일 인증번호 전송
+
+==== Request
+
+include::{snippets}/member/register/certification/success/http-request.adoc[]
+query-parameters::
+include::{snippets}/member/register/certification/success/query-parameters.adoc[]
+
+==== Response
+include::{snippets}/member/register/certification/success/http-response.adoc[]
+
+=== 아이디 찾기
+
+==== Request
+
+include::{snippets}/member/find/id/success/http-request.adoc[]
+query-parameters::
+include::{snippets}/member/find/id/success/query-parameters.adoc[]
+
+==== Response
+
+include::{snippets}/member/find/id/success/http-response.adoc[]
+include::{snippets}/member/find/id/success/response-fields.adoc[]
