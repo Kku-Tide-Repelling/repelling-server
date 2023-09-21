@@ -11,7 +11,6 @@ public record RepellentDataRequest (
         String soundType,
         String soundLevel,
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd,HH:mm:ss", timezone = "Asia/Seoul")
-//        @DateTimeFormat(pattern = "yyyy-MM-dd','HH:mm:ss")
         LocalDateTime timestamp
 ) {
     public static RepellentDataRequest of(String gatewayId, String nodeId, String message, String soundType, String soundLevel, LocalDateTime timestamp) {

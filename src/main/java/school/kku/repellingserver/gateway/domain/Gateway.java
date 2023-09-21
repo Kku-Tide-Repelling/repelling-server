@@ -20,6 +20,7 @@ public class Gateway {
     private String ipv4;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
     private Member member;
 
     @Builder
