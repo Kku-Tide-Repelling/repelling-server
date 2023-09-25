@@ -36,6 +36,7 @@ public class SpringSecurityConfiguration {
                 .authorizeHttpRequests((req) -> req
                         .requestMatchers(new MvcRequestMatcher(null, "/api/v1/login")).permitAll()
                         .requestMatchers(new MvcRequestMatcher(null, "/api/v1/repellent-data")).permitAll()
+                        .requestMatchers(new MvcRequestMatcher(null, "/docs/index.html")).permitAll()
                         .anyRequest().authenticated()
 //                                .anyRequest().permitAll()
                         )
