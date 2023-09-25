@@ -37,7 +37,6 @@ public class Farm {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RepellentDevice> repellentDevice = new ArrayList<>();
 

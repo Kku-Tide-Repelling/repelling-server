@@ -73,6 +73,9 @@ public class PostConstructService {
 
         RepellentDevice repellentDevice1 = RepellentDevice.builder()
                 .serialId("repellentDeviceId1")
+                .name("1번기기")
+                .latitude("37.5")
+                .longitude("127.0")
                 .farm(farm1)
                 .isActivated(true)
                 .build();
@@ -80,6 +83,9 @@ public class PostConstructService {
 
         RepellentDevice repellentDevice2 = RepellentDevice.builder()
                 .serialId("repellentDeviceId2")
+                .name("2번기기")
+                .latitude("37.5")
+                .longitude("127.3")
                 .farm(farm1)
                 .isActivated(true)
                 .build();
@@ -87,10 +93,34 @@ public class PostConstructService {
 
         RepellentDevice repellentDevice3 = RepellentDevice.builder()
                 .serialId("repellentDeviceId3")
+                .name("3번기기")
+                .latitude("37.5")
+                .longitude("127.4")
                 .farm(farm1)
                 .isActivated(true)
                 .build();
         repellentDeviceRepository.save(repellentDevice3);
+
+
+        RepellentDevice repellentDevice4 = RepellentDevice.builder()
+                .serialId("repellentDeviceId1")
+                .name("4번기기")
+                .latitude("37.0")
+                .longitude("126.0")
+                .farm(farm2)
+                .isActivated(true)
+                .build();
+        repellentDeviceRepository.save(repellentDevice4);
+
+        RepellentDevice repellentDevice5 = RepellentDevice.builder()
+                .serialId("repellentDeviceId2")
+                .name("5번기기")
+                .latitude("37.0")
+                .longitude("126.1")
+                .farm(farm2)
+                .isActivated(true)
+                .build();
+        repellentDeviceRepository.save(repellentDevice5);
 
         RepellentSound repellentSound = RepellentSound.builder()
                 .soundLevel(1)
