@@ -6,11 +6,9 @@ public record FarmRequest (
         String serialId,
         String farmName,
         String farmAddress,
-        String latitude,
-        String longitude,
         FarmType farmType
 ) {
-    public static FarmRequest of(String serialId, String farmName, String farmAddress,String latitude, String longitude, FarmType farmType) {
-        return new FarmRequest(serialId, farmName, farmAddress,latitude, longitude, farmType);
+    public static FarmRequest of(String serialId, String farmName, String farmAddress, FarmType farmType) {
+        return new FarmRequest(serialId, farmName, farmAddress, farmType);
     }
 }

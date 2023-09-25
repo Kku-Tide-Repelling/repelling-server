@@ -1,16 +1,8 @@
 package school.kku.repellingserver.gateway.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
-import org.springframework.restdocs.payload.PayloadDocumentation;
-import org.springframework.restdocs.request.RequestDocumentation;
 import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import school.kku.repellingserver.common.BaseControllerTest;
 import school.kku.repellingserver.gateway.dto.RepellentDataRequest;
 import school.kku.repellingserver.gateway.service.GatewayService;
@@ -41,7 +33,7 @@ class GatewayControllerTest extends BaseControllerTest {
                 .thenReturn(true);
 
         //when
-        ResultActions resultActions = mockMvc.perform(get(API + "/valid/serial-id")
+        ResultActions resultActions = mockMvc.perform(get(API + "/gateway/valid/serial-id")
                         .param("serialId", serialId))
                 .andDo(print());
 
@@ -66,7 +58,7 @@ class GatewayControllerTest extends BaseControllerTest {
                 "nodeId",
                 "message",
                 "soundType",
-                "soundLevel",
+                3,
                 LocalDateTime.now()
         );
 

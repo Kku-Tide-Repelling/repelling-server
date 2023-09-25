@@ -9,11 +9,11 @@ public record RepellentDataRequest (
         String nodeId,
         String message,
         String soundType,
-        String soundLevel,
+        Integer soundLevel,
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd,HH:mm:ss", timezone = "Asia/Seoul")
         LocalDateTime timestamp
 ) {
-    public static RepellentDataRequest of(String gatewayId, String nodeId, String message, String soundType, String soundLevel, LocalDateTime timestamp) {
+    public static RepellentDataRequest of(String gatewayId, String nodeId, String message, String soundType, Integer soundLevel, LocalDateTime timestamp) {
         return new RepellentDataRequest(gatewayId, nodeId, message, soundType, soundLevel, timestamp);
     }
 }

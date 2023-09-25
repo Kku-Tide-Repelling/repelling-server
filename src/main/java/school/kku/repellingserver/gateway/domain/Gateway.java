@@ -1,12 +1,13 @@
 package school.kku.repellingserver.gateway.domain;
 
-import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import school.kku.repellingserver.member.domain.Member;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
+@DynamicInsert
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
@@ -17,14 +18,17 @@ public class Gateway {
 
     private String serialId;
 
+    @Setter
     private String ipv4;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private Member member;
+    @ColumnDefault("false")
+    private Boolean isActivated;
 
     @Builder
-    public Gateway(String serialId) {
+    public Gateway(Long id, String serialId, String ipv4, Boolean isActivated) {
+        this.id = id;
         this.serialId = serialId;
+        this.ipv4 = ipv4;
+        this.isActivated = isActivated;
     }
 }

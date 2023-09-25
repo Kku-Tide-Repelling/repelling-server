@@ -8,8 +8,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -22,7 +24,6 @@ import school.kku.repellingserver.member.service.MemberService;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -98,12 +99,19 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
     private void setAuthentication(HttpServletRequest request, String accessToken) {
         String loginId = JwtTokenUtils.getLoginId(accessToken, key);
+
         Member member = memberService.loadUserByUsername(loginId);
 
-        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
-                member, null, List.of(new SimpleGrantedAuthority("USER"))
+
+        AbstractAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                member,
+                null,
+                AuthorityUtils.NO_AUTHORITIES
         );
         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        SecurityContext securityContext = SecurityContextHolder.createEmptyContext();
+        securityContext.setAuthentication(authentication);
+        SecurityContextHolder.setContext(securityContext);
     }
 }

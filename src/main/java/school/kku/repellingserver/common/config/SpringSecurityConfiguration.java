@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import school.kku.repellingserver.common.config.filter.JwtTokenFilter;
 import school.kku.repellingserver.common.exception.CustomAuthenticationEntryPoint;
 import school.kku.repellingserver.jwt.repository.RefreshTokenRepository;
@@ -33,7 +34,11 @@ public class SpringSecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((req) -> req
-                        .anyRequest().permitAll())
+                        .requestMatchers(new MvcRequestMatcher(null, "/api/v1/login")).permitAll()
+                        .requestMatchers(new MvcRequestMatcher(null, "/api/v1/repellent-data")).permitAll()
+                        .anyRequest().authenticated()
+//                                .anyRequest().permitAll()
+                        )
                 .sessionManagement((session) -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(new JwtTokenFilter(memberService, refreshTokenRepository, secretKey), UsernamePasswordAuthenticationFilter.class)

@@ -27,7 +27,7 @@ public class MemberService {
         Member member = memberRepository.findByLoginId(loginRequest.loginId())
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다."));
 
-        if (!passwordEncoder.matches(member.getPassword(), loginRequest.password())) {
+        if (!passwordEncoder.matches(loginRequest.password(), member.getPassword())) {
             throw new IllegalArgumentException("잘못된 비밀번호입니다!");
         }
 
