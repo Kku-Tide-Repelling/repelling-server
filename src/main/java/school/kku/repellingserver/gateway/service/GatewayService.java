@@ -27,7 +27,7 @@ public class GatewayService {
     }
 
     @Transactional
-    public void saveData(RepellentDataRequest request, String gatewayIp) {
+    public RepellentData saveData(RepellentDataRequest request, String gatewayIp) {
 
         boolean isGatewayExists = gatewayRepository.existsBySerialId(request.gatewayId());
 
@@ -54,7 +54,24 @@ public class GatewayService {
             RepellentDevice repellentDevice = repellentDeviceRepository.findBySerialId(request.nodeId())
                     .orElseThrow(() -> new RuntimeException("Repellent Device not found"));
 
-            repellentDataRepository.save(
+            return repellentDataRepository.save(
+                    RepellentData.builder()
+                            .detectionTime(request.timestamp())
+                            .detectionDate(request.timestamp().toLocalDate())
+                            .repellentDevice(repellentDevice)
+                            .repellentSound(repellentSound)
+                            .build()
+            );
+        } else {
+            RepellentSound repellentSound = repellentSoundRepository.save(RepellentSound.builder()
+                    .soundName(request.soundType())
+                    .soundLevel(request.soundLevel())
+                    .build()
+            );
+            RepellentDevice repellentDevice = repellentDeviceRepository.findBySerialId(request.nodeId())
+                    .orElseThrow(() -> new RuntimeException("Repellent Device not found"));
+
+            return repellentDataRepository.save(
                     RepellentData.builder()
                             .detectionTime(request.timestamp())
                             .detectionDate(request.timestamp().toLocalDate())
@@ -64,10 +81,7 @@ public class GatewayService {
             );
         }
 
-        repellentDataRepository.save(
-                RepellentData.builder()
-                        .build()
-        );
+
 
 
     }

@@ -1,10 +1,8 @@
 package school.kku.repellingserver.repellent.repellentData.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import school.kku.repellingserver.repellent.repellentDevice.domain.RepellentDevice;
@@ -12,6 +10,7 @@ import school.kku.repellingserver.repellent.repellentDevice.domain.RepellentDevi
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@ToString(exclude = {"repellentDevice", "repellentSound"})
 @DynamicInsert
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter

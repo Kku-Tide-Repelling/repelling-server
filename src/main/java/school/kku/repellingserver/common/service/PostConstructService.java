@@ -72,7 +72,7 @@ public class PostConstructService {
         farmRepository.save(farm2);
 
         RepellentDevice repellentDevice1 = RepellentDevice.builder()
-                .serialId("repellentDeviceId1")
+                .serialId("170")
                 .name("1번기기")
                 .latitude("37.5")
                 .longitude("127.0")
@@ -83,7 +83,7 @@ public class PostConstructService {
         repellentDeviceRepository.save(repellentDevice1);
 
         RepellentDevice repellentDevice2 = RepellentDevice.builder()
-                .serialId("repellentDeviceId2")
+                .serialId("171")
                 .name("2번기기")
                 .latitude("37.5")
                 .longitude("127.3")

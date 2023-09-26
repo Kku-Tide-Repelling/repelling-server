@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import school.kku.repellingserver.gateway.dto.RepellentDataRequest;
 import school.kku.repellingserver.gateway.dto.SerialIdExistResponse;
 import school.kku.repellingserver.gateway.service.GatewayService;
+import school.kku.repellingserver.repellent.repellentData.domain.RepellentData;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -30,7 +31,9 @@ public class GatewayController {
     public ResponseEntity<String> repellentData(@RequestBody RepellentDataRequest request, HttpServletRequest httpServletRequest) {
         String gatewayIp = httpServletRequest.getRemoteAddr();
         log.info("gateway IP : {}", gatewayIp);
-        gatewayService.saveData(request, gatewayIp);
+        RepellentData repellentData = gatewayService.saveData(request, gatewayIp);
+        log.info("repellentData : {}", repellentData);
+
         return ResponseEntity.ok("OK");
     }
 
