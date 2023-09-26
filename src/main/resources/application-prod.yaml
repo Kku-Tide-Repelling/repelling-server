@@ -1,4 +1,7 @@
 spring:
+  datasource:
+    tomcat:
+      initial-size: 30
   config:
     activate:
       on-profile: prod
