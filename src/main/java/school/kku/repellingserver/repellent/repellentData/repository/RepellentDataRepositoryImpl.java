@@ -33,7 +33,7 @@ public class RepellentDataRepositoryImpl implements RepellentDataRepositoryCusto
                         repellentData.repellentDevice.farm.id.eq(farmId)
                                 .and(repellentData.detectionDate.between(fiveDaysAgo, now))
                 )
-                .groupBy(repellentData.detectionDate)
+                .groupBy(repellentData.detectionDate, repellentData.detectionType)
                 .orderBy(repellentData.detectionDate.desc()) // 최신 날짜 순으로 정렬
                 .fetch();
 
