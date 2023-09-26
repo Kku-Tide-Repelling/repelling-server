@@ -17,4 +17,9 @@ public class ControllerExceptionAdvice {
     public ResponseEntity<ErrorResponse> illegalArgumentException(IllegalArgumentException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ErrorResponse.of(e.getMessage()));
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> exception(Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ErrorResponse.of(e.getMessage()));
+    }
 }
