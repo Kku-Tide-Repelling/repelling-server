@@ -78,6 +78,7 @@ public class PostConstructService {
                 .longitude("127.0")
                 .farm(farm1)
                 .isActivated(true)
+                .isWorking(true)
                 .build();
         repellentDeviceRepository.save(repellentDevice1);
 
@@ -88,6 +89,7 @@ public class PostConstructService {
                 .longitude("127.3")
                 .farm(farm1)
                 .isActivated(true)
+                .isWorking(false)
                 .build();
         repellentDeviceRepository.save(repellentDevice2);
 
@@ -98,6 +100,7 @@ public class PostConstructService {
                 .longitude("127.4")
                 .farm(farm1)
                 .isActivated(true)
+                .isWorking(true)
                 .build();
         repellentDeviceRepository.save(repellentDevice3);
 
@@ -109,6 +112,7 @@ public class PostConstructService {
                 .longitude("126.0")
                 .farm(farm2)
                 .isActivated(true)
+                .isWorking(true)
                 .build();
         repellentDeviceRepository.save(repellentDevice4);
 
@@ -119,6 +123,7 @@ public class PostConstructService {
                 .longitude("126.1")
                 .farm(farm2)
                 .isActivated(true)
+                .isWorking(true)
                 .build();
         repellentDeviceRepository.save(repellentDevice5);
 

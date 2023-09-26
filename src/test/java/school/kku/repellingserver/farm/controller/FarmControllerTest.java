@@ -87,7 +87,7 @@ class FarmControllerTest extends BaseControllerTest {
                         responseFields(
                                 fieldWithPath("[].farmId").description("농장 id"),
                                 fieldWithPath("[].farmName").description("농장 이름"),
-                                fieldWithPath("[].deviceCount").description("농장 멤버 수"),
+                                fieldWithPath("[].deviceCount").description("농장에 해당하는 퇴치기기 수"),
                                 fieldWithPath("[].farmAddress").description("농장 주소")
                         )));
     }
@@ -115,6 +115,7 @@ class FarmControllerTest extends BaseControllerTest {
                                         .latitude("37.5")
                                         .longitude("127.0")
                                         .isActivated(true)
+                                        .isWorking(true)
                                         .build(),
                                 RepellentDevice.builder()
                                         .id(2L)
@@ -123,6 +124,7 @@ class FarmControllerTest extends BaseControllerTest {
                                         .latitude("37.5")
                                         .longitude("127.3")
                                         .isActivated(true)
+                                        .isWorking(false)
                                         .build(),
                                 RepellentDevice.builder()
                                         .id(3L)
@@ -131,6 +133,7 @@ class FarmControllerTest extends BaseControllerTest {
                                         .latitude("37.5")
                                         .longitude("127.4")
                                         .isActivated(true)
+                                        .isWorking(true)
                                         .build()
                         )
                 )
@@ -155,7 +158,7 @@ class FarmControllerTest extends BaseControllerTest {
                                         .name("1번기기")
                                         .latitude("37.5")
                                         .longitude("127.0")
-                                        .isActivated(true)
+                                        .isWorking(true)
                                         .build(),
                                 RepellentDevice.builder()
                                         .id(2L)
@@ -163,7 +166,7 @@ class FarmControllerTest extends BaseControllerTest {
                                         .name("2번기기")
                                         .latitude("37.5")
                                         .longitude("127.3")
-                                        .isActivated(true)
+                                        .isWorking(false)
                                         .build(),
                                 RepellentDevice.builder()
                                         .id(3L)
@@ -171,7 +174,7 @@ class FarmControllerTest extends BaseControllerTest {
                                         .name("3번기기")
                                         .latitude("37.5")
                                         .longitude("127.4")
-                                        .isActivated(true)
+                                        .isWorking(true)
                                         .build()
                         )
                 )
@@ -191,16 +194,16 @@ class FarmControllerTest extends BaseControllerTest {
                                 fieldWithPath("[].name").description("농장 이름"),
                                 fieldWithPath("[].address").description("농장 주소"),
                                 fieldWithPath("[].farmType").description("농장 타입"),
-                                fieldWithPath("[].gateway.id").description("게이트웨이 id"),
-                                fieldWithPath("[].gateway.serialId").description("게이트웨이 serialId"),
-                                fieldWithPath("[].gateway.ipv4").description("게이트웨이 ipv4"),
-                                fieldWithPath("[].gateway.isActivated").description("게이트웨이 활성화 여부"),
+                                fieldWithPath("[].gateway.id").description("게이트웨이 id").ignored(),
+                                fieldWithPath("[].gateway.serialId").description("게이트웨이 serialId").ignored(),
+                                fieldWithPath("[].gateway.ipv4").description("게이트웨이 ipv4").ignored(),
+                                fieldWithPath("[].gateway.isActivated").description("게이트웨이 활성화 여부").ignored(),
                                 fieldWithPath("[].repellentDevice.[].id").description("repellentDevice id"),
                                 fieldWithPath("[].repellentDevice.[].serialId").description("repellentDevice serialId"),
                                 fieldWithPath("[].repellentDevice.[].name").description("repellentDevice name"),
                                 fieldWithPath("[].repellentDevice.[].latitude").description("repellentDevice latitude"),
                                 fieldWithPath("[].repellentDevice.[].longitude").description("repellentDevice longitude"),
-                                fieldWithPath("[].repellentDevice.[].isActivated").description("repellentDevice 활성화 여부")
+                                fieldWithPath("[].repellentDevice.[].isWorking").description("repellentDevice 작동중 여부")
                         )));
     }
 
