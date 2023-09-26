@@ -20,6 +20,7 @@ import school.kku.repellingserver.repellent.repellentDevice.domain.RepellentDevi
 import school.kku.repellingserver.repellent.repellentDevice.repository.RepellentDeviceRepository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @Service
@@ -137,6 +138,7 @@ public class PostConstructService {
                 RepellentData.builder()
                         .detectionNum(1)
                         .detectionDate(LocalDate.now().minusDays(5))
+                        .detectionTime(LocalDateTime.now().minusDays(5))
                         .detectionType(DetectionType.PIR)
                         .repellentSound(repellentSound)
                         .repellentDevice(repellentDevice1)
@@ -147,6 +149,7 @@ public class PostConstructService {
                 RepellentData.builder()
                         .detectionNum(2)
                         .detectionDate(LocalDate.now().minusDays(4))
+                        .detectionTime(LocalDateTime.now().minusDays(4))
                         .detectionType(DetectionType.PIR)
                         .repellentSound(repellentSound)
                         .repellentDevice(repellentDevice1)
@@ -157,6 +160,7 @@ public class PostConstructService {
                 RepellentData.builder()
                         .detectionNum(3)
                         .detectionDate(LocalDate.now().minusDays(3))
+                        .detectionTime(LocalDateTime.now().minusDays(3))
                         .detectionType(DetectionType.PIR)
                         .repellentSound(repellentSound)
                         .repellentDevice(repellentDevice1)
@@ -167,6 +171,7 @@ public class PostConstructService {
                 RepellentData.builder()
                         .detectionNum(4)
                         .detectionDate(LocalDate.now().minusDays(2))
+                        .detectionTime(LocalDateTime.now().minusDays(2))
                         .detectionType(DetectionType.PIR)
                         .repellentSound(repellentSound)
                         .repellentDevice(repellentDevice1)
@@ -177,6 +182,7 @@ public class PostConstructService {
                 RepellentData.builder()
                         .detectionNum(4)
                         .detectionDate(LocalDate.now().minusDays(1))
+                        .detectionTime(LocalDateTime.now().minusDays(1))
                         .detectionType(DetectionType.PIR)
                         .repellentSound(repellentSound)
                         .repellentDevice(repellentDevice1)
@@ -186,7 +192,8 @@ public class PostConstructService {
         repellentDataRepository.save(
                 RepellentData.builder()
                         .detectionNum(10)
-                        .detectionDate(LocalDate.now().minusDays(1))
+                        .detectionDate(LocalDate.now())
+                        .detectionTime(LocalDateTime.now())
                         .detectionType(DetectionType.PIR)
                         .repellentSound(repellentSound)
                         .repellentDevice(repellentDevice1)

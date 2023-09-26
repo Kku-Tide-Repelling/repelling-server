@@ -15,7 +15,7 @@ public class RepellentDataRepositoryImpl implements RepellentDataRepositoryCusto
 
     private final JPAQueryFactory jpaQueryFactory;
 
-    LocalDate fiveDaysAgo = LocalDate.now().minusDays(5);
+    LocalDate fourDaysAgo = LocalDate.now().minusDays(4);
     LocalDate now = LocalDate.now();
 
     @Override
@@ -31,7 +31,7 @@ public class RepellentDataRepositoryImpl implements RepellentDataRepositoryCusto
                 .from(repellentData)
                 .where(
                         repellentData.repellentDevice.farm.id.eq(farmId)
-                                .and(repellentData.detectionDate.between(fiveDaysAgo, now))
+                                .and(repellentData.detectionDate.between(fourDaysAgo, now))
                 )
                 .groupBy(repellentData.detectionDate, repellentData.detectionType)
                 .orderBy(repellentData.detectionDate.desc()) // 최신 날짜 순으로 정렬
