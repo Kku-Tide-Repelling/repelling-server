@@ -37,7 +37,7 @@ public class PostConstructService {
     @PostConstruct
     public void init() {
         Member member = Member.builder()
-                .name("테스트 계정")
+                .name("testName")
                 .email("test@gmail.com")
                 .loginId("test")
                 .password(passwordEncoder.encode("test"))
