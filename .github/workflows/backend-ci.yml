@@ -13,7 +13,7 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.SECRET_TOKEN }}
           submodules: true
@@ -44,7 +44,9 @@ jobs:
       - name: Build and push Docker images
         uses: docker/build-push-action@v5.0.0
         with:
-          secrets: ${{ secrets.SECRET_TOKEN }}
+          context: .
+          secrets: |
+            "github_token=${{ secrets.SECRET_TOKEN }}"
           push: true
           tags: wan2da/repeller-server:latest
 
