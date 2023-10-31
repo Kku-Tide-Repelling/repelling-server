@@ -10,7 +10,6 @@ import school.kku.repellingserver.gateway.dto.SerialIdExistResponse;
 import school.kku.repellingserver.gateway.service.GatewayService;
 import school.kku.repellingserver.repellent.repellentData.domain.RepellentData;
 
-@Slf4j
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1")
@@ -18,23 +17,13 @@ public class GatewayController {
 
     private final GatewayService gatewayService;
 
+//    FIXME : SerialId를 관리자가 미리 삽입 필요
     @GetMapping("/gateway/valid/serial-id")
     public ResponseEntity<SerialIdExistResponse> validSerialId(@RequestParam String serialId) {
 
         boolean isSerialIdExists = gatewayService.isSerialIdExists(serialId);
 
         return ResponseEntity.ok(SerialIdExistResponse.of(isSerialIdExists));
-    }
-
-// FIXME: gateway serialId :  205
-    @PostMapping("/repellent-data")
-    public ResponseEntity<String> repellentData(@RequestBody RepellentDataRequest request, HttpServletRequest httpServletRequest) {
-        String gatewayIp = httpServletRequest.getRemoteAddr();
-        log.info("gateway IP : {}", gatewayIp);
-        RepellentData repellentData = gatewayService.saveData(request, gatewayIp);
-        log.info("repellentData : {}", repellentData);
-
-        return ResponseEntity.ok("OK");
     }
 
 }

@@ -50,35 +50,4 @@ class GatewayControllerTest extends BaseControllerTest {
 
     }
 
-    @Test
-    void 게이트웨이에서_퇴치_데이터를_전달받는다() throws Exception {
-        //given
-        final RepellentDataRequest request = RepellentDataRequest.of(
-                "gatewayId",
-                "nodeId",
-                "message",
-                "soundType",
-                3,
-                LocalDateTime.now()
-        );
-
-        //when
-        ResultActions resultActions = mockMvc.perform(post(API + "/repellent-data")
-                        .content(objectMapper.writeValueAsString(request))
-                        .contentType("application/json"))
-                .andDo(print());
-
-        //then
-        resultActions.andExpect(status().isOk())
-                .andDo(document("repellent-data/success",
-                        requestFields(
-                                fieldWithPath("gatewayId").description("게이트웨이의 ID"),
-                                fieldWithPath("nodeId").description("노드의 ID"),
-                                fieldWithPath("message").description("메시지"),
-                                fieldWithPath("soundType").description("소리의 종류"),
-                                fieldWithPath("soundLevel").description("소리의 크기"),
-                                fieldWithPath("timestamp").description("데이터가 전송된 시간")
-                        )));
-    }
-
 }

@@ -31,6 +31,9 @@ public class RepellentData {
 
     private LocalDate detectionDate;
 
+    @ColumnDefault("0")
+    private Long reDetectionMinutes;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private RepellentDevice repellentDevice;
 
@@ -38,12 +41,15 @@ public class RepellentData {
     private RepellentSound repellentSound;
 
     @Builder
-    public RepellentData(Long id, DetectionType detectionType, Integer detectionNum, LocalDateTime detectionTime, LocalDate detectionDate, RepellentDevice repellentDevice, RepellentSound repellentSound) {
+    public RepellentData(Long id, DetectionType detectionType, Integer detectionNum,
+        LocalDateTime detectionTime, LocalDate detectionDate, Long reDetectionMinutes,
+        RepellentDevice repellentDevice, RepellentSound repellentSound) {
         this.id = id;
         this.detectionType = detectionType;
         this.detectionNum = detectionNum;
         this.detectionTime = detectionTime;
         this.detectionDate = detectionDate;
+        this.reDetectionMinutes = reDetectionMinutes;
         this.repellentDevice = repellentDevice;
         this.repellentSound = repellentSound;
     }

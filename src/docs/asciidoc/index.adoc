@@ -20,6 +20,9 @@
 include::{snippets}/repellent-data/success/http-request.adoc[]
 include::{snippets}/repellent-data/success/request-fields.adoc[]
 
+DetectionType 현재 넣을 수 있는 타입::
+PIR, BIRD, PIG,
+
 ==== Response
 
 include::{snippets}/repellent-data/success/http-response.adoc[]

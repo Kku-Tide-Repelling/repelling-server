@@ -13,17 +13,19 @@ import java.nio.file.LinkOption;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/repellent-device")
 public class RepellentDeviceController {
 
     private final RepellentDeviceService repellentDeviceService;
 
-    @GetMapping("/repellent-device/valid/serial-id")
+    @GetMapping("/valid/serial-id")
     public ResponseEntity<SerialIdExistResponse> validSerialId(@RequestParam String serialId, @RequestParam Long farmId) {
         boolean isSerialIdExists = repellentDeviceService.isSerialIdExistsActivated(serialId, farmId);
 
         return ResponseEntity.ok(SerialIdExistResponse.of(isSerialIdExists));
     }
+
+
 
 
 }

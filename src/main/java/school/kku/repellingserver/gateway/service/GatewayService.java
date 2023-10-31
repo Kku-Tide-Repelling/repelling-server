@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import school.kku.repellingserver.gateway.domain.Gateway;
 import school.kku.repellingserver.gateway.dto.RepellentDataRequest;
 import school.kku.repellingserver.gateway.repository.GatewayRepository;
-import school.kku.repellingserver.repellent.repellentData.domain.DetectionType;
 import school.kku.repellingserver.repellent.repellentData.domain.RepellentData;
 import school.kku.repellingserver.repellent.repellentData.domain.RepellentSound;
 import school.kku.repellingserver.repellent.repellentData.repository.RepellentDataRepository;
@@ -57,12 +56,12 @@ public class GatewayService {
 
             return repellentDataRepository.save(
                     RepellentData.builder()
-                            .detectionType(DetectionType.PIR)
+                            .detectionType(request.detectionType())
                             .detectionTime(request.timestamp())
                             .detectionDate(request.timestamp().toLocalDate())
                             .repellentDevice(repellentDevice)
                             .repellentSound(repellentSound)
-                            .detectionNum(1)
+                            .detectionNum(request.detectedCount())
                             .build()
             );
         } else {
@@ -76,12 +75,12 @@ public class GatewayService {
 
             return repellentDataRepository.save(
                     RepellentData.builder()
-                            .detectionType(DetectionType.PIR)
+                            .detectionType(request.detectionType())
                             .detectionTime(request.timestamp())
                             .detectionDate(request.timestamp().toLocalDate())
                             .repellentDevice(repellentDevice)
                             .repellentSound(repellentSound)
-                            .detectionNum(1)
+                            .detectionNum(request.detectedCount())
                             .build()
             );
         }
