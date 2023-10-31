@@ -47,17 +47,18 @@ jobs:
           push: true
           tags: wan2da/repeller-server:latest
 
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          sync: true
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
-          script: |
-            docker login -u 'wan2da' -p 'QKRwodhks1!!@' docker.io
-            docker pull wan2da/repeller-server:latest
-            docker stop repeller-server
-            docker rm repeller-server
-            docker run -d --name 'repeller-server' -p 8080:8080 wan2da/repeller-server:latest
+#       현재 서버에 SSH 연결이 안되어서 주석 처리
+#      - name: executing remote ssh commands using password
+#        uses: appleboy/ssh-action@v1.0.0
+#        with:
+#          sync: true
+#          host: ${{ secrets.HOST }}
+#          username: ${{ secrets.USERNAME }}
+#          password: ${{ secrets.PASSWORD }}
+#          port: ${{ secrets.PORT }}
+#          script: |
+#            docker login -u 'wan2da' -p 'QKRwodhks1!!@' docker.io
+#            docker pull wan2da/repeller-server:latest
+#            docker stop repeller-server
+#            docker rm repeller-server
+#            docker run -d --name 'repeller-server' -p 8080:8080 wan2da/repeller-server:latest
