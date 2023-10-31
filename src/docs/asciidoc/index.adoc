@@ -134,4 +134,70 @@ include::{snippets}/repellent-device/valid/serial-id/success/query-parameters.ad
 include::{snippets}/repellent-device/valid/serial-id/success/http-response.adoc[]
 include::{snippets}/repellent-device/valid/serial-id/success/response-fields.adoc[]
 
+== 상세페이지 API
 
+=== 농장 퇴치 현황
+
+==== Request
+
+include::{snippets}/repellent-data/detail/group-farm/success/http-request.adoc[]
+path-parameters::
+include::{snippets}/repellent-data/detail/group-farm/success/path-parameters.adoc[]
+
+==== Response
+
+include::{snippets}/repellent-data/detail/group-farm/success/http-response.adoc[]
+include::{snippets}/repellent-data/detail/group-farm/success/response-fields.adoc[]
+
+=== 농장 퇴치 현황 (시간별)
+
+==== Request
+
+include::{snippets}/repellent-data/detail/group-time/success/http-request.adoc[]
+path-parameters::
+include::{snippets}/repellent-data/detail/group-time/success/path-parameters.adoc[]
+
+==== Response
+
+include::{snippets}/repellent-data/detail/group-time/success/http-response.adoc[]
+include::{snippets}/repellent-data/detail/group-time/success/response-fields.adoc[]
+
+=== 농장 퇴치 현황 (퇴치 기기별)
+
+==== Request
+
+include::{snippets}/repellent-data/detail/group-detection-device/success/http-request.adoc[]
+path-parameters::
+include::{snippets}/repellent-data/detail/group-detection-device/success/path-parameters.adoc[]
+
+==== Response
+
+include::{snippets}/repellent-data/detail/group-detection-device/success/http-response.adoc[]
+
+include::{snippets}/repellent-data/detail/group-detection-device/success/response-fields.adoc[]
+
+=== 농장 퇴치 현황 ( 퇴치 기기하나의)
+
+==== Request
+
+include::{snippets}/repellent-data/detail/detection-device-id/success/http-request.adoc[]
+path-parameters::
+include::{snippets}/repellent-data/detail/detection-device-id/success/path-parameters.adoc[]
+
+==== Response
+
+include::{snippets}/repellent-data/detail/detection-device-id/success/http-response.adoc[]
+
+include::{snippets}/repellent-data/detail/detection-device-id/success/response-fields.adoc[]
+
+=== 퇴치기기별 최근 4개의 퇴치소리와 재탐지 시간
+
+==== Request
+
+include::{snippets}/repellent-data/detail/detection/detection-device-id/success/http-request.adoc[]
+path-parameters::
+include::{snippets}/repellent-data/detail/detection/detection-device-id/success/path-parameters.adoc[]
+
+==== Response
+
+include::{snippets}/repellent-data/detail/detection/detection-device-id/success/http-response.adoc[]
