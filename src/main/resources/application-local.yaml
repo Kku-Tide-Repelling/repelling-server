@@ -4,18 +4,27 @@ spring:
       on-profile: local
 
   datasource:
-    url: jdbc:h2:mem:db;MODE=MYSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    driver-class-name: org.h2.Driver
+    # MYSQL
+    url: jdbc:mysql://localhost:3306/repellerDB
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password:
+
+  # H2DB
+  #    url: jdbc:h2:tcp://localhost/~/my-db-test
+  #    username: sa
+  #    password:
+  #    driver-class-name: org.h2.Driver
   h2:
     console:
       enabled: true
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     properties:
       hibernate:
         format_sql: true
-  sql.init.mode: always
+  sql:
+    init:
+      mode: never

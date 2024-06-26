@@ -4,11 +4,13 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import school.kku.repellingserver.gateway.domain.Gateway;
 import school.kku.repellingserver.gateway.dto.RepellentDataRequest;
 import school.kku.repellingserver.gateway.repository.GatewayRepository;
+import school.kku.repellingserver.member.domain.Member;
 import school.kku.repellingserver.repellent.repellentData.domain.RepellentData;
 import school.kku.repellingserver.repellent.repellentData.domain.RepellentSound;
 import school.kku.repellingserver.repellent.repellentData.dto.DailyDetectionListResponse;
@@ -37,6 +39,19 @@ public class RepellentDataService {
 
         MainPageDataResponse response = repellentDataRepository.findRepellentDataByFarmGroupByRepellentSound(
             farmId);
+
+        response.setDayByDetectionList(dayByDataList);
+
+        return response;
+    }
+
+    public MainPageDataResponse RepellentDataList(Long farmId) {
+
+        List<DayByDetectionListResponse> dayByDataList = repellentDataRepository.findRepellentDataByMemberWithDays(
+                farmId);
+
+        MainPageDataResponse response = repellentDataRepository.findRepellentDataByFarmGroupByRepellentSound(
+                farmId);
 
         response.setDayByDetectionList(dayByDataList);
 
@@ -118,6 +133,8 @@ public class RepellentDataService {
         }
     }
 
+
+
     public List<DayByDetectionListResponse> getDayByDetectionList(Long farmId) {
         return repellentDataRepository.findRepellentDataByMemberWithDays(farmId);
     }
@@ -156,6 +173,10 @@ public class RepellentDataService {
 
     public List<ReDetectionMinutesAndRepellentSoundResponse> getDetectionListByDetectionDeviceId(Long detectionDeviceId) {
         return repellentDataRepository.findDetectionListByDetectionDeviceIdLimit4(detectionDeviceId);
+    }
+
+    public List<RepellentData> getRepDataByMember(Member member) {
+        return repellentDataRepository.getRepData(member);
     }
 
 }

@@ -1,6 +1,7 @@
 package school.kku.repellingserver.repellent.repellentDevice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -40,13 +41,13 @@ public class RepellentDevice {
     @JoinColumn(name = "farm_id")
     private Farm farm;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "repellentDevice", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<RepellentData> repellentData = new ArrayList<>();
+    @JsonManagedReference
+    private List<RepellentData> repellentData;
 
 
     @Builder
-    public RepellentDevice(Long id, String serialId, String name, String latitude, String longitude, Boolean isActivated, Boolean isWorking, Farm farm) {
+    public RepellentDevice(Long id, String serialId, String name, String latitude, String longitude, Boolean isActivated, Boolean isWorking, Farm farm, List<RepellentData> repellentData) {
         this.id = id;
         this.serialId = serialId;
         this.name = name;
@@ -55,6 +56,7 @@ public class RepellentDevice {
         this.isActivated = isActivated;
         this.isWorking = isWorking;
         this.farm = farm;
+        this.repellentData = repellentData;
     }
 
     public void activate() {

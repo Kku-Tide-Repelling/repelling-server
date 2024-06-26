@@ -1,6 +1,7 @@
 package school.kku.repellingserver.farm.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -10,6 +11,7 @@ import school.kku.repellingserver.farm.constant.FarmType;
 import school.kku.repellingserver.farm.dto.FarmRequest;
 import school.kku.repellingserver.gateway.domain.Gateway;
 import school.kku.repellingserver.member.domain.Member;
+import school.kku.repellingserver.repellent.repellentData.domain.RepellentData;
 import school.kku.repellingserver.repellent.repellentDevice.domain.RepellentDevice;
 
 import java.util.ArrayList;
@@ -38,7 +40,12 @@ public class Farm {
     private Member member;
 
     @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<RepellentDevice> repellentDevice = new ArrayList<>();
+
+    @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<RepellentData> repellentData;
 
     @Builder
     public Farm(Long id, String name, String address, FarmType farmType, Gateway gateway, Member member, List<RepellentDevice> repellentDevice) {

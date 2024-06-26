@@ -2,6 +2,10 @@ package school.kku.repellingserver.repellent.repellentData.repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import school.kku.repellingserver.farm.domain.Farm;
+import school.kku.repellingserver.member.domain.Member;
+import school.kku.repellingserver.repellent.repellentData.domain.RepellentData;
 import school.kku.repellingserver.repellent.repellentData.dto.DailyDetectionListResponse;
 import school.kku.repellingserver.repellent.repellentData.dto.DayByDetectionListResponse;
 import school.kku.repellingserver.repellent.repellentData.dto.HourByDetectionListResponse;
@@ -22,4 +26,6 @@ public interface RepellentDataRepositoryCustom {
   List<DayByDetectionListResponse> findEachDayDetectionListByDetectionDeviceId(Long detectionDeviceId);
 
   List<ReDetectionMinutesAndRepellentSoundResponse> findDetectionListByDetectionDeviceIdLimit4(Long detectionDeviceId);
+
+  List<RepellentData> getRepData(Member member);
 }

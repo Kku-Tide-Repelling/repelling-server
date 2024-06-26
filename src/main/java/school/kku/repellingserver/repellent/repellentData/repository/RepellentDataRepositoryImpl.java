@@ -1,5 +1,6 @@
 package school.kku.repellingserver.repellent.repellentData.repository;
 
+import static school.kku.repellingserver.farm.domain.QFarm.farm;
 import static school.kku.repellingserver.repellent.repellentData.domain.QRepellentData.repellentData;
 
 import com.querydsl.core.annotations.QueryProjection;
@@ -9,6 +10,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import school.kku.repellingserver.farm.domain.Farm;
+import school.kku.repellingserver.member.domain.Member;
+import school.kku.repellingserver.repellent.repellentData.domain.RepellentData;
 import school.kku.repellingserver.repellent.repellentData.dto.DailyDetectionListResponse;
 import school.kku.repellingserver.repellent.repellentData.dto.DayByDetectionListResponse;
 import school.kku.repellingserver.repellent.repellentData.dto.HourByDetectionListResponse;
@@ -146,6 +150,17 @@ public class RepellentDataRepositoryImpl implements RepellentDataRepositoryCusto
         .limit(4)
         .fetch();
   }
+
+    @Override
+    public List<RepellentData> getRepData(Member member) {
+        return jpaQueryFactory
+                .selectFrom(repellentData)
+                .join(repellentData.repellentDevice)
+                .where(repellentData.member.eq(member))
+                .orderBy(repellentData.id.desc())
+                .fetch();
+    }
+
 
 
 }

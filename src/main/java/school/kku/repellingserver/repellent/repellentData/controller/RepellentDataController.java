@@ -5,6 +5,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import school.kku.repellingserver.farm.dto.FarmListResponse;
 import school.kku.repellingserver.gateway.dto.RepellentDataRequest;
+import school.kku.repellingserver.member.domain.Member;
 import school.kku.repellingserver.repellent.repellentData.domain.RepellentData;
 import school.kku.repellingserver.repellent.repellentData.dto.DailyDetectionListResponse;
 import school.kku.repellingserver.repellent.repellentData.dto.DayByDetectionListResponse;
@@ -45,6 +48,13 @@ public class RepellentDataController {
   public ResponseEntity<MainPageDataResponse> getRepellentDataList(@RequestParam Long farmId) {
     return ResponseEntity.ok(repellentDataService.getRepellentDataList(farmId));
   }
+
+  @GetMapping("/list")
+  public ResponseEntity<List<RepellentData>> getRepellentData(@AuthenticationPrincipal Member member) {
+    //List<RepellentData> repellentDataList = repellentDataService.getRepDataByMember(member);
+    return ResponseEntity.ok(repellentDataService.getRepDataByMember(member));
+  }
+
 
   @GetMapping("/detail/group-farm/farm/{farmId}")
   public ResponseEntity<List<DayByDetectionListResponse>> getDayByDetectionList(@PathVariable Long farmId) {
